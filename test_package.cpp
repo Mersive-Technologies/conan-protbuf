@@ -1,8 +1,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#define PROTOBUF_USE_DLLS
-
 #include "addressbook.pb.h"
 
 int main()

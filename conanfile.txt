@@ -1,13 +1,13 @@
 [requires]
 cppzmq/4.7.1
-protobuf/3.9.1
+protobuf/3.14.0
 
 [generators]
 cmake
 
 [options]
 zeromq:shared=True
-protobuf:shared=True
+protobuf:shared=False
 
 [imports]
 bin, *.dll -> ./bin
