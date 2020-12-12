@@ -1,0 +1,19 @@
+[requires]
+cppzmq/4.7.1
+protobuf/3.9.1
+
+[generators]
+cmake
+
+[options]
+zeromq:shared=True
+protobuf:shared=True
+
+[imports]
+bin, *.dll -> ./bin
+bin, *.exe -> ./bin
+lib, *.lib* -> ./lib
+lib, *.cmake* -> ./lib
+include, *.h -> ./include
+include, *.proto -> ./include
+include, *.inc -> ./include
