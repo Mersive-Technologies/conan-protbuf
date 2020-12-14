@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 project(test_package)
 
-#set(protobuf_DIR "c:/users/bgardner/workspace/conan-center-index/recipes/protobuf/all/build_subfolder/source_subfolder/cmake/lib/cmake/protobuf/")
+set( CMAKE_CXX_STANDARD 14 )
 
 include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup(TARGETS)
@@ -29,5 +29,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}" "${CMAK
 
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS_PROTOBUF})
 
-protobuf_generate(PROTO_SRCS PROTO_HDRS TARGET ${PROJECT_NAME})
-protobuf_generate(LANGUAGE cpp TARGET ${PROJECT_NAME} PROTOS addressbook.proto)
+protobuf_generate(TARGET ${PROJECT_NAME})
