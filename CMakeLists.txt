@@ -23,9 +23,9 @@ if (NOT PROTOC_PROGRAM)
 endif()
 
 add_executable(${PROJECT_NAME} test_package.cpp addressbook.proto)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
-target_link_directories(${PROJECT_NAME} PUBLIC "${CMAKE_BINARY_DIR}/lib")
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}" "${CMAKE_BINARY_DIR}/include")
+
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}" "${CONAN_INCLUDE_DIRS}")
+target_link_directories( ${PROJECT_NAME} PUBLIC ${CONAN_LIB_DIRS} )
 
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS_PROTOBUF})
 
