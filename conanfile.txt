@@ -1,5 +1,4 @@
 [requires]
-cppzmq/4.7.1
 protobuf/3.12.4
 
 [generators]
@@ -13,6 +12,7 @@ protobuf:shared=False
 bin, *.dll -> ./bin
 bin, *.exe -> ./bin
 lib, *.lib* -> ./lib
+lib, *.pdb* -> ./lib
 lib, *.cmake* -> ./lib
 include, *.h -> ./include
 include, *.proto -> ./include

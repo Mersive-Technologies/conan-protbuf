@@ -7,7 +7,15 @@ include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup(TARGETS)
 
 find_package(Protobuf REQUIRED)
-set(CMAKE_CXX_FLAGS "/MT")
+
+message( "CMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}")
+if( "${CMAKE_BUILD_TYPE}" MATCHES "Debug"  )
+    message( "===> DEBUG" )
+    set(CMAKE_CXX_FLAGS "/MTd")
+else()
+    message( "===> RELEASE" )
+    set(CMAKE_CXX_FLAGS "/MT")
+endif()
 
 find_program(PROTOC_PROGRAM protoc)
 if (NOT PROTOC_PROGRAM)
@@ -18,9 +26,8 @@ add_executable(${PROJECT_NAME} test_package.cpp addressbook.proto)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
 target_link_directories(${PROJECT_NAME} PUBLIC "${CMAKE_BINARY_DIR}/lib")
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}" "${CMAKE_BINARY_DIR}/include")
-target_link_libraries(${PROJECT_NAME} libprotobuf)
 
-target_link_libraries(${PROJECT_NAME} libprotoc)
+target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS_PROTOBUF})
 
 protobuf_generate(PROTO_SRCS PROTO_HDRS TARGET ${PROJECT_NAME})
 protobuf_generate(LANGUAGE cpp TARGET ${PROJECT_NAME} PROTOS addressbook.proto)
