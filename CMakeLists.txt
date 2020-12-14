@@ -7,6 +7,7 @@ include("${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 conan_basic_setup(TARGETS)
 
 find_package(Protobuf REQUIRED)
+set(CMAKE_CXX_FLAGS "/MT")
 
 find_program(PROTOC_PROGRAM protoc)
 if (NOT PROTOC_PROGRAM)
